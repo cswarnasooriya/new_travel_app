@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './main.css';
 
 
@@ -17,6 +17,9 @@ import img7 from '../../Assets/7.jpg';
 import img10 from '../../Assets/9.jpg';
 import img9 from '../../Assets/10.jpg';
 
+
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 
 
@@ -122,10 +125,19 @@ const Data = [
 
 
 const Main = () => {
+
+  //lets create scroll animation
+
+useEffect(()=>{
+  Aos.init({duration: 2000})
+}, [])
+
+
+
   return (
     <section  className='main container section'>
       <div className="secTitle">
-        <h3 className="title">
+        <h3 data-aos="fade-right" data-aos-duration="2500" className="title">
           Most Visited Destinations
         </h3>
       </div>
@@ -138,32 +150,32 @@ const Main = () => {
             return(
               <div key={id} className="singleDestination">
 
-                <div className="imageDiv">
+                <div  data-aos="fade-up" data-aos-duration="3000" className="imageDiv">
                   <img src={imgSrc} alt={destTitle}/>
                 </div>
 
-                <div className="cardInfo">
-                  <h4 className='destTitle'>{destTitle}</h4>
+                <div  data-aos="fade-up" data-aos-duration="3200" className="cardInfo">
+                  <h4 data-aos="fade-up" data-aos-duration="3200" className='destTitle'>{destTitle}</h4>
                   <span className='continent flex'>
                     <HiOutlineLocationMarker className="icon"/>
                     <span className='name'>{location}</span>
                   </span>
 
-                  <div className="fees flex">
+                  <div  data-aos="fade-left" data-aos-duration="3000" className="fees flex">
                     <div className="grade">
                       <span >{grade}<small>+1</small></span>
                     </div>
 
-                    <div className="price">
+                    <div data-aos="fade-right" data-aos-duration="3500" className="price">
                       <h5>{fees}</h5>
                     </div>
                   </div>
 
-                  <div className="desc">
+                  <div data-aos="fade-down" data-aos-duration="2000" className="desc">
                     <p>{description}</p>
                   </div>
 
-                  <button className='btn flex'>
+                  <button data-aos="fade-up" data-aos-duration="4000" className='btn flex'>
                     Details <HiOutlineClipboardCheck className="icon"/>
                   </button>
 
